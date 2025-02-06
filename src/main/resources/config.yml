@@ -1,0 +1,16 @@
+language: "English" #"English", "Russian"
+database:
+  type: "sqlite"
+  mysql:
+    url: "localhost"
+    db-name: "test"
+    username: "admin"
+    password: "12345"
+  sqlite:
+    filename: "database" #only name, without .db
+currency:
+  diamond:
+    type: DIAMOND
+    symbol: "D"
+    custom-name: "Diya" #(optional)
+version: 1 #Do not touch this if you don't want break something

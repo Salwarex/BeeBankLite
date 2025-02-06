@@ -1,0 +1,11 @@
+name: BeeBankLite
+version: '0.9.5'
+main: salwarex.plugin.beebanklite.MainClass
+api-version: 1.20
+softdepend: [ PlaceholderAPI ]
+authors: [ Salwarex ]
+description: A plugin that allows you to implement a simple in-game banking system on a server using customizable items that players can mine in the world as they survive. It was originally created by an administrator for a now-closed vanilla server.
+website: https://github.com/Salwarex
+commands:
+  bank: {}
+  pay: {}

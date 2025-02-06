@@ -1,0 +1,88 @@
+#If you want change something in this file, you will need to reload server by /reload or /restart
+#Если вы захотите что-то изменить в этом файле, вам нужно будет перезагрузить сервер через команды /reload или /restart
+
+#If you want to add a custom language, then specify the name of your language in the parent object, which you will enter in config.yml later
+English: #not 100% accurate. If you want help me with translation to English please write me: @vit4liy (Discord)
+  reloadedPlugin: "&aConfig has been reloaded!"
+  dontHavePermissions: "&cSorry, you don't have permissions for this action"
+  unknownCommand: "&cSorry, this plugin not understand this command:("
+  notArgument: "&cPlease write an command argument"
+  payCommandArgumentsError: "&cPlease enter the arguments: <Amount> <Recipient's nickname>"
+  incorrectValueError: "&cThe amount value is incorrect. Try again."
+  selfPaymentError: "&cYou cannot make a payment to yourself! Please try again."
+  successTransfer: "&aYou have successfully transferred {SUM} to {RECEIVER}"
+  receivedTransfer: "&aYour account received {SUM} from {SENDER}"
+  noSuchPlayerError: "&cA player with such a nickname has never logged on to the server! Please try again"
+  notEnoughMoneyError: "&cThere are not enough funds in your account. ({CURRENCY-NAME}&c). Top up your account, or change the main currency in /bank."
+  materialNotDeclaredError: "&cThis material ({MATERIAL}) is not declared as a game item in the currently used version of the Spigot API. Please contact the server administrator!"
+  topUpAccountSuccess: "&aYou have successfully topped up your account on &e{SUM}"
+  notDeclaredItemInHand: "&cPlease take in your right hand any item declared as the currency of the server"
+  withdrawDontHaveEnoughSpaceAlert: "&cYou don't have enough space in your inventory. It was deduced {SUM}"
+  withdrawSuccess: "&aYou have successfully withdrawn {SUM}"
+  bankOperationsTitle: "&8Banking operations"
+  bankMenuMain:
+    lore1: "&7Click to select the working"
+    lore2: "&7currency from the suggested ones:"
+    selected: "&7< &aselected&7 >"
+    yourBalance: "&eYour balance: &a{BALANCE}"
+  bankMenuWithdraw:
+    title: "&8{ &c- &8} &cWithdraw funds"
+    lore1: "&7After clicking, you need to &ewrite the amount"
+    lore2: "&7you want to withdraw!"
+  bankMenuDeposit:
+    title: "&8{ &a+ &8} &aDeposite funds"
+    lore1: "&7Takes the currency items from your &eright hand"
+    lore2: "&7and deposite them into your account."
+  writeAmountChat: "&ePlease write to the chat the amount of currency you want to withdraw (only a number)"
+  transactionHistoryAmount: "&8Transaction history of {NICKNAME}" #only 4 words and word number 4 must be player nickname
+  transferTo: "&8 [ &c-{SUM} &8] &cTransfer to &e{RECEIVER}"
+  transferFrom: "&8 [ &a+{SUM} &8] &aTransfer from &e{SENDER}"
+  withdraw: "&8 [ &b-{SUM} &8] &bWithdrawal of funds"
+  deposit: "&8 [ &6+{SUM} &8] &6Deposit"
+  transactionTime: "&7Transaction time: &e{TIME} &7(server time)"
+  nextPage: "&aNext page &f>>>"
+  prevPage: "&f<<< &cPrevious page"
+
+
+Russian:
+  reloadedPlugin: "&aКонфиг успешно перезагружен!"
+  dontHavePermissions: "&cИзвините, вы не имеете прав для совершения этого действия!"
+  unknownCommand: "&cИзвините, плагин не понимает вашу команду:("
+  notArgument: "&cПожалуйста, напишите аргументы"
+  payCommandArgumentsError: "&cПожалуйста напишите аргументы команды: <Количество> <Никнейм получателя>"
+  incorrectValueError: "&cВведенное количество вызывает ошибку. Пожалуйста, повторите ещё раз."
+  selfPaymentError: "&cВы не можете отправить деньги самому себе! Пожалуйста, повторите ещё раз."
+  successTransfer: "&aВы успешно перевели {SUM} игроку {RECEIVER}"
+  receivedTransfer: "&aНа ваш счет поступила сумма {SUM} от игрока {SENDER}"
+  noSuchPlayerError: "&cИгрок с таким ником никогда не заходил на сервере! Пожалуйста, перепроверьте данные и попробуйте ещё раз."
+  notEnoughMoneyError: "&cНа вашем счету недостаточно средств ({CURRENCY-NAME}&c). Пополните свой аккаунт или смените основную валюту в /bank."
+  materialNotDeclaredError: "&cЭтот материал ({MATERIAL}) не объявлен как игровой предмет в текущей версии Spigot API, используемой плагином. Пожалуйста, сообщите об этом администратору!"
+  topUpAccountSuccess: "&aВы успешно пополнили свой аккаунт на сумму &e{SUM}"
+  notDeclaredItemInHand: "&cПожалуйста, возьмите в правую руку любой предмет, который объявлен как валюта сервера."
+  withdrawDontHaveEnoughSpaceAlert: "&cУ вас недостаточно места в инвентаре. Было выведено только {SUM}"
+  withdrawSuccess: "&aВы успешно вывели сумму в размере {SUM}"
+  bankOperationsTitle: "&8Банковские операции"
+  bankMenuMain:
+    lore1: "&7Нажмите, чтобы выбрать основную"
+    lore2: "&7валюту аккаунта из предложенных:"
+    selected: "&7< &aвыбрано&7 >"
+    yourBalance: "&eВаш баланс: &a{BALANCE}"
+  bankMenuWithdraw:
+    title: "&8{ &c- &8} &cСнять средства"
+    lore1: "&7После нажатия вам будет нужно &eнаписать количество"
+    lore2: "&7средств, которые вы хотите вывести!"
+  bankMenuDeposit:
+    title: "&8{ &a+ &8} &aПоложить средства на баланс"
+    lore1: "&7Берет предмет-валюту из вашей правой руки"
+    lore2: "&7и кладет его на баланс вашего аккаунт."
+  writeAmountChat: "&eПожалуйста, напишите в чат количество средств, которые вы желаете вывести (только число)"
+  transactionHistoryAmount: "&8История транзакций игрока {NICKNAME}" #only 4 words and word number 4 must be player nickname
+  transferTo: "&8 [ &c-{SUM} &8] &cПеревод игроку &e{RECEIVER}"
+  transferFrom: "&8 [ &a+{SUM} &8] &aПеревод от игрока &e{SENDER}"
+  withdraw: "&8 [ &b-{SUM} &8] &bСнятие средств"
+  deposit: "&8 [ &6+{SUM} &8] &6Пополнение"
+  transactionTime: "&7Время транзакции: &e{TIME} &7(время сервера)"
+  nextPage: "&aСледующая страница &f>>>"
+  prevPage: "&f<<< &cПредыдущая страница"
+
+version: 2 #Do not touch this if you don't want break something
