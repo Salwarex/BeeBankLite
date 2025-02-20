@@ -8,6 +8,9 @@ To install, you need to place the file in the plugins folder, start and disable 
   - **Deposite** - requires that the player's right hand contains one of the currencies specified in config.yml. If the condition is met, the funds will be withdrawn from the hand and credited to the account in the database.
   - **/bank history {nickname}** - shows the history of operations on the specified account.
 - **/pay {sum} {nickname}** - sends funds to the specified player's account, if it exists.
+##Permissions
+- **bbl.history.others** - view the transaction history of other players.
+- **bbl.reload** - reload the config.
 # Supported techonologies
 - SQLite/MySQL database
 - PlaceholderAPI (beebanklite:mainbalance)
