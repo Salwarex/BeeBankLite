@@ -40,10 +40,6 @@ public class MainCommand extends AbstractCommand{
             return;
         }
         if(args[0].equalsIgnoreCase("history")){
-            if(!sender.hasPermission("bbl.history")){
-                Reports.send(sender, text.translate("dontHavePermissions"));
-                return;
-            }
             String cons = "";
             if(args.length == 1){
                 cons = sender.getName();
