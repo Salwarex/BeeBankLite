@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="BeeBankLite">
+  <artifact type="jar" name="BeeBankLite-1.0.0">
     <output-path>F:/Users/Пользователь/Desktop/plugins/servertest/plugins</output-path>
-    <root id="archive" name="BeeBankLite.jar">
+    <root id="archive" name="BeeBankLite-1.0.0.jar">
       <element id="module-output" name="BeeBankLite" />
       <element id="library" level="project" name="Maven: org.xerial:sqlite-jdbc:3.47.0.0" />
     </root>

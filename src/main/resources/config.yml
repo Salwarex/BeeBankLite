@@ -11,6 +11,6 @@ database:
 currency:
   diamond:
     type: DIAMOND
-    symbol: "D"
-    custom-name: "Diya" #(optional)
-version: 1 #Do not touch this if you don't want break something
+    symbol: "⓪"
+    custom-name: "Diamond" #(optional)
+version: 2 #Do not touch this if you don't want break something

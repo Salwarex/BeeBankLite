@@ -2,6 +2,7 @@ package salwarex.plugin.beebanklite;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import salwarex.plugin.beebanklite.Interfaces.BankInterfaceEvent;
@@ -11,6 +12,9 @@ import salwarex.plugin.beebanklite.command.MainCommand;
 import salwarex.plugin.beebanklite.command.PayCommand;
 import salwarex.plugin.beebanklite.command.Storage;
 
+import java.io.File;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -29,6 +33,7 @@ public final class MainClass extends JavaPlugin {
         getDataFolder().mkdir();
         saveDefaultConfig();
         instance = this;
+        Storage.checkUpdates("config.yml");
         lang = new Storage("languages.yml");
 
         if(getConfig().getString("database.type").equalsIgnoreCase("sqlite")){
@@ -74,14 +79,13 @@ public final class MainClass extends JavaPlugin {
             }
             SQLcurrenciesPart = SQLcurrenciesPart.substring(0, SQLcurrenciesPart.length() - 2);
 
-            //System.err.println("holder VARCHAR(16) PRIMARY KEY, creation_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, default_currency_id INTEGER NOT NULL DEFAULT 0 " + SQLcurrenciesPart + ", ");
             MainClass.getDatabase().createTable("bbl_accounts", "holder VARCHAR(16) PRIMARY KEY, creation_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, default_currency_id INTEGER NOT NULL DEFAULT 0, " + SQLcurrenciesPart);
             if(getConfig().getString("database.type").equalsIgnoreCase("sqlite")){
                 MainClass.getDatabase().createTable("bbl_transactions", "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, type VARCHAR(16) NOT NULL, sender VARCHAR(32) NOT NULL DEFAULT 'SERVER', receiver VARCHAR(32) NOT NULL DEFAULT 'SERVER', sum INTEGER NOT NULL DEFAULT 0, currency VARCHAR(64) NOT NULL DEFAULT " + currencies.get(0));
             }
             else{
-                MainClass.getDatabase().createTable("bbl_transactions", "id SERIAL PRIMARY KEY NOT NULL, timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, type VARCHAR(16) NOT NULL, sender VARCHAR(32) NOT NULL DEFAULT 'SERVER', receiver VARCHAR(32) NOT NULL DEFAULT 'SERVER', sum INTEGER NOT NULL DEFAULT 0, currency VARCHAR(64) NOT NULL DEFAULT " + currencies.get(0));
-            } //Изменения
+                MainClass.getDatabase().createTable("bbl_transactions", "id SERIAL PRIMARY KEY NOT NULL, timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, type VARCHAR(16) NOT NULL, sender VARCHAR(32) NOT NULL DEFAULT 'SERVER', receiver VARCHAR(32) NOT NULL DEFAULT 'SERVER', sum INTEGER NOT NULL DEFAULT 0, currency VARCHAR(64) NOT NULL DEFAULT '" + currencies.get(0) + "'");
+            }
 
             for(String key : instance.getConfig().getConfigurationSection("currency").getKeys(false)){
                 if(!database.columnExists("bbl_accounts", key)){
@@ -94,11 +98,6 @@ public final class MainClass extends JavaPlugin {
             System.err.println("Please specify at least one currency in " + getDataFolder().getAbsolutePath() + " config.yml -> currency.<> and restart the server!" );
             Bukkit.getPluginManager().disablePlugin(this);
         }
-
-
-
-
-
 
         new MainCommand();
         new PayCommand();
@@ -125,7 +124,6 @@ public final class MainClass extends JavaPlugin {
     public static Storage getText(){ return  instance.lang; }
     public static Database getDatabase(){ return instance.database; }
     public static ArrayList<String> getCurrencies(){ return instance.currencies; }
-
 
 
 }

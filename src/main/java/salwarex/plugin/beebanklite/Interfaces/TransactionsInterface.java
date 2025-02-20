@@ -35,22 +35,32 @@ public class TransactionsInterface extends Interface {
 
     private ArrayList<Transaction> playerTransactions(){
         ArrayList<Transaction> result = new ArrayList<>();
-        ArrayList<ArrayList<Object>> objs = db.getDataRS_OR("bbl_transactions", "sender", "receiver", considered_name.toLowerCase(), considered_name.toLowerCase(), "id", "timestamp", "type", "sender", "receiver", "sum", "currency");
+        ArrayList<ArrayList<Object>> objs = db.getDataRS_OR("bbl_transactions", "sender", "receiver",
+                considered_name.toLowerCase(), considered_name.toLowerCase(),
+                "id", "timestamp", "type", "sender", "receiver", "sum", "currency");
         for(ArrayList<Object> prov : objs){
-            String dstr = (String) prov.get(1);
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            Date parsed = new Date();
-            try{
-                parsed = sdf.parse(dstr);
-            }
-            catch (ParseException e){
-                e.printStackTrace();
-                return null;
-            }
+            Transaction transaction = null;
+            Timestamp ts; int id;
+            if(MainClass.getInstance().getConfig().getString("database.type").equalsIgnoreCase("sqlite")){
+                String dstr = (String) prov.get(1);
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                Date parsed = new Date();
+                try{
+                    parsed = sdf.parse(dstr);
+                }
+                catch (ParseException e){
+                    e.printStackTrace();
+                    return null;
+                }
 
-            Timestamp ts = new Timestamp(parsed.getTime());
-
-            Transaction transaction = new Transaction((int) prov.get(0), ts, (String) prov.get(2), (String) prov.get(3), (String) prov.get(4), (int) prov.get(5), (String) prov.get(6));
+                ts = new Timestamp(parsed.getTime());
+                id = (int) prov.get(0);
+            }//sqlite
+            else{
+                ts = (Timestamp) prov.get(1);
+                id = ((java.math.BigInteger) prov.get(0)).intValue();
+            }//mysql
+            transaction = new Transaction(id, ts, (String) prov.get(2), (String) prov.get(3), (String) prov.get(4), (int) prov.get(5), (String) prov.get(6));
             result.add(transaction);
         }
         return result;

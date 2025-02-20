@@ -18,33 +18,25 @@ public class MainCommand extends AbstractCommand{
         super("bank");
     }
 
-
     @Override
     public void execute(CommandSender sender, String label, String[] args){
-
-        if(!sender.hasPermission("bbl.user")){
-            Reports.send(sender, text.translate("dontHavePermissions"));
-            return;
-        }
-
         if(args.length == 0){
             if(!sender.getName().equalsIgnoreCase("CONSOLE")){
-                BankInterface view = new BankInterface(Bukkit.getPlayer(sender.getName()));
+                new BankInterface(Bukkit.getPlayer(sender.getName()));
                 return;
             }
-
         }
         if(args[0].equalsIgnoreCase("reload")){
-            if(!sender.hasPermission("spec.reload")){
-                sender.sendMessage(text.translate("dontHavePermissions")); //Нет прав
+            if(!sender.hasPermission("bbl.reload")){
+                sender.sendMessage(text.translate("dontHavePermissions"));
                 return;
             }
             MainClass.getInstance().reloadConfig();
-            sender.sendMessage(text.translate("reloadedPlugin")); //Плагин перезагружен
+            sender.sendMessage(text.translate("reloadedPlugin"));
             return;
         }
         if(args[0].equalsIgnoreCase("about")){
-            sender.sendMessage("§7Author: §e_Vitalex");
+            sender.sendMessage("§7Author: §eSalwarex");
             return;
         }
         if(args[0].equalsIgnoreCase("history")){
@@ -64,11 +56,9 @@ public class MainCommand extends AbstractCommand{
                 cons = args[1];
             }
 
-            TransactionsInterface trin = new TransactionsInterface(Bukkit.getPlayer(sender.getName()), cons, 0);
+            new TransactionsInterface(Bukkit.getPlayer(sender.getName()), cons, 0);
             return;
         }
-
-
 
         sender.sendMessage(text.translate("unknownCommand"));
     }
